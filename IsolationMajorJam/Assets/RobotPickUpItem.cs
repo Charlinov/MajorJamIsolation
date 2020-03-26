@@ -52,8 +52,21 @@ public class RobotPickUpItem : MonoBehaviour
         return null;
     }
 
+    public bool HasItem()
+    {
+        if (objectInHands)
+            return true;
+        return false;
+    }
 
-    private void OnDrawGizmos()
+    public bool RecycleItem()
+    {
+        DestroyObject(objectInHands.gameObject);
+        return true;
+    }
+
+
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(pickUpLocation.position, radius);
